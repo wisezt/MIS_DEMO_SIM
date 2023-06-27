@@ -37,7 +37,9 @@
 						<th>ID</th>
 						<th>First Name</th>
 						<th>Last Name</th>
-						<th>Email</td>
+						<th>Email</th>
+						<th>Action</th>
+						
 					</tr>
 				<thead>
 				<tbody>
@@ -49,6 +51,7 @@
 						<td><%=student.getFirstName()%></td>
 						<td><%=student.getLastName()%></td>
 						<td><%=student.getEmail()%></td>
+						<td><a href="update-student.jsp?id=<%=student.getId()%>&firstName=<%=student.getFirstName()%>&lastName=<%=student.getLastName()%>&email=<%=student.getEmail()%>">Update</a>/<a href="DeleteStudent?id=<%=student.getId()%>">Delete</a></td>
 					</tr>
 					<%
 					}

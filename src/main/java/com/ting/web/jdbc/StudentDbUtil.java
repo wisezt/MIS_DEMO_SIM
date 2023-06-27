@@ -117,4 +117,68 @@ public class StudentDbUtil {
 		
 	}
 
+	public void updateStudent(Student student) {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+
+		// Step 1: Get a connection to the database
+		try {
+			myConn = dataSource.getConnection();
+
+			// Step 2: Create a SQL statements
+			String sql = "update student set first_name=?, last_name=?, email=? where id=?";
+			
+			myStmt = myConn.prepareStatement(sql);
+
+			myStmt.setString(1, student.getFirstName());
+			myStmt.setString(2, student.getLastName());
+			myStmt.setString(3, student.getEmail());
+			myStmt.setInt(4, student.getId());
+			
+			
+			// Step 3: Execute SQL query
+			myStmt.execute();
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			// step 5: close JDBC objects
+			close(myStmt, myRs, myConn);
+		}
+		
+	}
+
+	public void deleteStudent(int id) {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+
+		// Step 1: Get a connection to the database
+		try {
+			myConn = dataSource.getConnection();
+
+			// Step 2: Create a SQL statements
+			String sql = "delete from student where id=?";
+			
+			myStmt = myConn.prepareStatement(sql);
+
+			myStmt.setInt(1, id);			
+			
+			// Step 3: Execute SQL query
+			myStmt.execute();
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			// step 5: close JDBC objects
+			close(myStmt, myRs, myConn);
+		}
+		
+	}
+
 }
