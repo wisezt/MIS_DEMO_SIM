@@ -42,12 +42,5 @@ public class StudentControllerServlet extends HttpServlet {
 
 	}
 	
-	
-//	for(Student student : students){
-//	
-//	System.out.println("Servlet: " + student.toString());
-//	
-//	
-//}
 
 }
