@@ -22,6 +22,11 @@
 	</div>
 
 	<br>
+	
+	<form action="add-student.jsp">
+		<input type="Submit" value="Add Student">	
+	</form>
+	
 
 	<div id="container">
 		<div id="content">
@@ -53,8 +58,6 @@
 
 		</div>
 	</div>
-
-
 
 
 </body>

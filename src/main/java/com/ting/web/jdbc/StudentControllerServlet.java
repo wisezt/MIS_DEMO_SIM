@@ -19,8 +19,6 @@ public class StudentControllerServlet extends HttpServlet {
 	private DataSource dataSource;
 	
 	private StudentDbUtil studentDbUtil;
-	
-	
 
 	@Override
 	public void init() throws ServletException {

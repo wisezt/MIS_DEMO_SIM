@@ -2,6 +2,7 @@ package com.ting.web.jdbc;
 
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -81,6 +82,39 @@ public class StudentDbUtil {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void addSutdent(Student student) {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+
+		// Step 1: Get a connection to the database
+		try {
+			myConn = dataSource.getConnection();
+
+			// Step 2: Create a SQL statements
+			String sql = "insert into student(first_name, last_name, email ) value(?,?,?)";
+			
+			myStmt = myConn.prepareStatement(sql);
+
+			myStmt.setString(1, student.getFirstName());
+			myStmt.setString(2, student.getLastName());
+			myStmt.setString(3, student.getEmail());
+			
+			
+			// Step 3: Execute SQL query
+			myStmt.execute();
+
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+			// step 5: close JDBC objects
+			close(myStmt, myRs, myConn);
+		}
+		
 	}
 
 }
